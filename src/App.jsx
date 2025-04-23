@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -11,7 +9,13 @@ function App() {
         <input placeholder='Enter a username'/>
       </div>
       <ul className="user-list">
-        <li>Example item</li>
+        <li className="user-list-item">
+          <img className="user-profile-picture" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"/>
+          <div className="user-info">
+            <p>Username</p>
+            <small>Bio</small>
+          </div>
+        </li>
       </ul>
     </div>
   )
