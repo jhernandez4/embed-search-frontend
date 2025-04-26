@@ -39,6 +39,10 @@ function App() {
     }
   };
 
+  const handleInputClear = () => {
+    setValue("");
+  }
+
   return (
     <div className="users-page">
       <h1>Users</h1>
@@ -54,7 +58,9 @@ function App() {
           className="user-search-input"
           placeholder='Enter a username'
           />
-          <button className="clear-input-button user-search-inline"><X/></button>
+          <button onClick={handleInputClear} className="clear-input-button user-search-inline">
+            <X/>
+          </button>
         </div>
         <button>Search</button>
       </div>
