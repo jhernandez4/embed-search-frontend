@@ -17,7 +17,7 @@ function App() {
     const fetchUsers = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(`${backendUrl}/users`);
+        const response = await axios.patch(`${backendUrl}/users`);
         setUsersList(response.data);
         console.log(response.data);
       } catch(error) {
@@ -55,7 +55,7 @@ function App() {
       )}
       
       <ul className="user-list">
-        {true && (
+        {isLoading && (
             [...Array(10)].map((_, index) => (
               <UserLoaderCard key={index}/>
             ))
