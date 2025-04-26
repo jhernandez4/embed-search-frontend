@@ -51,9 +51,9 @@ input:focus {
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  border: 1px rgb(216, 216, 216) solid;
+  border: 1px rgb(97, 97, 97) solid;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(126, 126, 126, 0.4);
 }
 
 .user-profile-picture {
@@ -67,4 +67,15 @@ input:focus {
   display: flex;
   flex-direction: column;
   align-items: start;
+}
+
+@media (prefers-color-scheme: light) {
+  .user-search-bar {
+    background-color: rgb(236, 236, 236);
+  }
+
+  .user-list-item {
+    border: 1px rgb(216, 216, 216) solid;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
 }
