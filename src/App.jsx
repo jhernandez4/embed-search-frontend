@@ -3,6 +3,7 @@ import './App.css'
 import { Search, X } from 'lucide-react'
 import axios from 'axios';
 import UserProfileCard from './components/UserProfileCard/UserProfileCard';
+import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 
 function App() {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -45,6 +46,13 @@ function App() {
         <button className="clear-input-button"><X/></button>
         <button>Search</button>
       </div>
+
+      {error && (
+        <div className="user-search-error">
+          <ErrorMessage message={error}/>
+        </div>
+      )}
+
       <ul className="user-list">
         <UserProfileCard/>
       </ul>
