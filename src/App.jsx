@@ -3,12 +3,20 @@ import './App.css'
 import { Search } from 'lucide-react'
 
 function App() {
+  const backendUrl = import.meta.env.BACKEND_URL;
+  const [value, setValue] = useState("");
+
   return (
     <div className="users-page">
       <h1>Users</h1>
       <div className="user-search-bar">      
         <Search/>
-        <input className="user-search-input" placeholder='Enter a username'/>
+        <input 
+        value={value} 
+        onChange={(e) => setValue(e.target.value)}
+        className="user-search-input" 
+        placeholder='Enter a username'
+        />
       </div>
       <ul className="user-list">
         <li className="user-list-item">
