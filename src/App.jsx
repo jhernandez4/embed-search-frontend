@@ -22,6 +22,7 @@ function App() {
         const response = await axios.get(`${backendUrl}/users`);
         setUsersList(response.data);
         console.log(response.data);
+        setError(null);
       } catch(error) {
         setError(error?.response?.data?.message || 'Failed to fetch users')
         console.error(error);
@@ -32,6 +33,25 @@ function App() {
 
     fetchUsers();
   }, []);
+
+  const handleSearch = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(`${backendUrl}/users/like-search`, {
+        params: {
+          "username": value
+        }
+      });
+      setUsersList(response.data);
+      console.log(response.data);
+      setError(null);
+    } catch(error) {
+      setError(error?.response?.data?.message || 'Failed to fetch users')
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const handleSearchIconClick = () => {
     if (searchInputRef.current) {
@@ -62,7 +82,7 @@ function App() {
             <X/>
           </button>
         </div>
-        <button>Search</button>
+        <button onClick={handleSearch}>Search</button>
       </div>
 
       {error && (
