@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import './App.css'
+import { Search } from 'lucide-react'
 
 function App() {
   return (
     <div className="users-page">
       <h1>Users</h1>
       <div className="user-search-bar">      
+        <Search/>
         <input placeholder='Enter a username'/>
       </div>
       <ul className="user-list">

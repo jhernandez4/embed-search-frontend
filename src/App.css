@@ -9,6 +9,26 @@
   padding: 0;
 }
 
+.user-search-bar {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 40px;
+  background-color: rgb(44, 44, 44);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+input {
+  height: 40px;
+  border: none;
+  background-color: transparent;
+}
+
+input:focus {
+  outline: none;
+}
+
 .users-page {
   display: flex;
   flex-direction: column;
