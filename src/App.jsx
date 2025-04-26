@@ -40,11 +40,18 @@ function App() {
   const handleSearch = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`${backendUrl}/users/like-search`, {
-        params: {
-          "username": value
-        }
-      });
+      let response;
+
+      if (value === "") {
+        response = await axios.get(`${backendUrl}/users`);
+      }
+      else {
+        response = await axios.get(`${backendUrl}/users/like-search`, {
+          params: {
+            "username": value
+          }
+        });
+      }
       setUsersList(response.data);
       console.log(response.data);
       setError(null);
@@ -89,6 +96,8 @@ function App() {
         <button onClick={handleSearch}>Search</button>
       </div>
 
+      <h3>Showing {`${usersList.length}`} results</h3>
+
       {error && (
         <div className="user-search-message">
           <ErrorMessage message={error}/>
@@ -108,7 +117,6 @@ function App() {
               <UserLoaderCard key={index}/>
             ))
         )}
-
         {usersList.map((user) => (
           <UserProfileCard
             key={user.id}
