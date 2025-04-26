@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Search } from 'lucide-react'
+import { Search, X } from 'lucide-react'
 
 function App() {
   const backendUrl = import.meta.env.BACKEND_URL;
@@ -19,6 +19,7 @@ function App() {
           placeholder='Enter a username'
           />
         </div>
+        <button className="clear-input-button"><X/></button>
         <button>Search</button>
       </div>
       <ul className="user-list">
