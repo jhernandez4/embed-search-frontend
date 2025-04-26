@@ -4,6 +4,7 @@ import { Search, X } from 'lucide-react'
 import axios from 'axios';
 import UserProfileCard from './components/UserProfileCard/UserProfileCard';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
+import UserLoaderCard from './components/UserLoaderCard/UserLoaderCard';
 
 function App() {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
