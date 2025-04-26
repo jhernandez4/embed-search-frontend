@@ -6,6 +6,7 @@ import UserProfileCard from './components/UserProfileCard/UserProfileCard';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import UserLoaderCard from './components/UserLoaderCard/UserLoaderCard';
 import NoUsersFoundMessage from './components/NoUsersFoundMessage/NousersFoundMessage';
+import Dropdown from './components/Dropdown/Dropdown';
 
 function App() {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -17,6 +18,17 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const searchInputRef = useRef(null);
+
+  const [selectedOption, setSelectedOption] = useState('default');
+
+  const options = [
+    { value: 'like-search', label: 'Like' },
+    { value: 'psql-search', label: 'PSQL' },
+  ];
+
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -78,6 +90,11 @@ function App() {
     <div className="users-page">
       <h1>Users</h1>
       <div className="user-search-section">
+        <Dropdown
+        value={selectedOption}
+        options={options}
+        onChange={handleSelectChange}
+        />
         <div className="user-search-bar">
           <button onClick={handleSearchIconClick} className="user-search-icon user-search-inline">
             <Search/>

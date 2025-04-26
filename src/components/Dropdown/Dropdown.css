@@ -1,0 +1,31 @@
+.dropdown-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dropdown-select {
+  width: 100%;
+  padding: 8px;
+  height: 40px;
+  font-size: 1rem;
+  background-color: #1a1a1a;
+  border: 1px solid #5e5e5e;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.dropdown-select:focus {
+  border-color: #0078d4;
+  outline: none;
+}
+
+.dropdown-select:hover {
+  border-color: #0078d4;
+}
+
+@media (prefers-color-scheme: light) {
+    .dropdown-select {
+        border: 1px solid #ccc;
+        background-color: white;
+    }
+}
