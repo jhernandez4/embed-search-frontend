@@ -17,7 +17,7 @@ function App() {
     const fetchUsers = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.patch(`${backendUrl}/users`);
+        const response = await axios.get(`${backendUrl}/users`);
         setUsersList(response.data);
         console.log(response.data);
       } catch(error) {
@@ -60,6 +60,15 @@ function App() {
               <UserLoaderCard key={index}/>
             ))
         )}
+
+        {usersList.map((user) => (
+          <UserProfileCard
+            key={user.id}
+            profile_picture_url={user.profile_picture}
+            username={user.username}
+            bio={user.bio}
+          />
+        ))}
 
       </ul>
     </div>
