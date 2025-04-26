@@ -27,10 +27,7 @@ function App() {
 
   const searchInputRef = useRef(null);
 
-  const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
+  // Load users on page load
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -50,35 +47,46 @@ function App() {
     fetchUsers();
   }, []);
 
+  // Load users on input change
+  useEffect(() => {
+    const fetchUsersOnSearch = async () => {
+      try {
+        setIsLoading(true);
+
+        let response;
+
+        if (value === "") {
+          response = await axios.get(`${backendUrl}/users`);
+        }
+        else {
+          response = await axios.get(`${backendUrl}/users/${selectedOption}`, {
+            params: {
+              "username": value 
+            }
+          });
+        }
+        setUsersList(response.data);
+        console.log(response.data);
+        setError(null);
+        setSearchQuery(value);
+      } catch(error) {
+        setError(error?.response?.data?.message || 'Failed to fetch users')
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchUsersOnSearch();
+  }, [value])
+
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
+    setValue("");
+  };
+
   const handleOnChange = async (e) => {
     setValue(e.target.value) 
-
-    try {
-      setIsLoading(true);
-
-      let response;
-      const trimmedValue = e.target.value.trim(); 
-
-      if (trimmedValue === "") {
-        response = await axios.get(`${backendUrl}/users`);
-      }
-      else {
-        response = await axios.get(`${backendUrl}/users/${selectedOption}`, {
-          params: {
-            "username": trimmedValue 
-          }
-        });
-      }
-      setUsersList(response.data);
-      console.log(response.data);
-      setError(null);
-      setSearchQuery(trimmedValue);
-    } catch(error) {
-      setError(error?.response?.data?.message || 'Failed to fetch users')
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
   }
 
   const handleSearchIconClick = () => {

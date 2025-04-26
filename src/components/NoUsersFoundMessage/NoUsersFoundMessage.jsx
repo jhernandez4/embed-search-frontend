@@ -6,7 +6,7 @@ const NoUsersFoundMessage = ({ name }) => {
   return (
     <div className="no-users-container">
       <p className="no-users-message">
-        No users were found matching the name <strong>{`${name}`}</strong>.
+        No users were found matching the name <strong>{`"${name}"`}</strong>.
       </p>
     </div>
   );
