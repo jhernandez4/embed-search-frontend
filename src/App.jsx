@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { Search, X } from 'lucide-react'
 import axios from 'axios';
@@ -12,6 +12,8 @@ function App() {
   const [usersList, setUsersList] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const searchInputRef = useRef(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -29,15 +31,24 @@ function App() {
     }
 
     fetchUsers();
-  }, [])
+  }, []);
+
+  const handleSearchIconClick = () => {
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  };
 
   return (
     <div className="users-page">
       <h1>Users</h1>
       <div className="user-search-section">
         <div className="user-search-bar">
-          <button className="user-search-icon user-search-inline"><Search/></button>
+          <button onClick={handleSearchIconClick} className="user-search-icon user-search-inline">
+            <Search/>
+          </button>
           <input
+          ref={searchInputRef}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           className="user-search-input"
