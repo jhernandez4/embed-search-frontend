@@ -8,7 +8,7 @@ function App() {
       <h1>Users</h1>
       <div className="user-search-bar">      
         <Search/>
-        <input placeholder='Enter a username'/>
+        <input className="user-search-input" placeholder='Enter a username'/>
       </div>
       <ul className="user-list">
         <li className="user-list-item">
