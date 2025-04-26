@@ -9,14 +9,17 @@ function App() {
   return (
     <div className="users-page">
       <h1>Users</h1>
-      <div className="user-search-bar">      
-        <Search/>
-        <input 
-        value={value} 
-        onChange={(e) => setValue(e.target.value)}
-        className="user-search-input" 
-        placeholder='Enter a username'
-        />
+      <div className="user-search-section">
+        <div className="user-search-bar">
+          <Search/>
+          <input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          className="user-search-input"
+          placeholder='Enter a username'
+          />
+        </div>
+        <button>Search</button>
       </div>
       <ul className="user-list">
         <li className="user-list-item">
