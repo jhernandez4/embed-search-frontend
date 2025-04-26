@@ -1,0 +1,28 @@
+.no-users-container {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 16px 24px;
+  border-radius: 8px;
+  width: 100%;
+  color: #333333;
+  animation: fadeIn 0.3s ease-in-out;
+  text-align: center;
+}
+
+.no-users-message {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+  color: #555555;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

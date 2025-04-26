@@ -5,6 +5,7 @@ import axios from 'axios';
 import UserProfileCard from './components/UserProfileCard/UserProfileCard';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import UserLoaderCard from './components/UserLoaderCard/UserLoaderCard';
+import NoUsersFoundMessage from './components/NoUsersFoundMessage/NousersFoundMessage';
 
 function App() {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -12,6 +13,8 @@ function App() {
   const [usersList, setUsersList] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  // For no user found message
+  const [searchQuery, setSearchQuery] = useState("");
 
   const searchInputRef = useRef(null);
 
@@ -45,6 +48,7 @@ function App() {
       setUsersList(response.data);
       console.log(response.data);
       setError(null);
+      setSearchQuery(value);
     } catch(error) {
       setError(error?.response?.data?.message || 'Failed to fetch users')
       console.error(error);
@@ -86,12 +90,19 @@ function App() {
       </div>
 
       {error && (
-        <div className="user-search-error">
+        <div className="user-search-message">
           <ErrorMessage message={error}/>
         </div>
       )}
       
+      {!error && !isLoading && usersList.length === 0 && (
+        <div className="user-search-message">
+          <NoUsersFoundMessage name={searchQuery}/>
+        </div>
+      )}
+      
       <ul className="user-list">
+        {/* Skeleton loaders for users */}
         {isLoading && (
             [...Array(10)].map((_, index) => (
               <UserLoaderCard key={index}/>
