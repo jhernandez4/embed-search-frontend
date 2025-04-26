@@ -52,12 +52,17 @@
 
 .clear-input-button {
   padding: 0;
+  border: none;
   height: 40px;
   margin-right: 20px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   padding: 0 15px;
   background-color: rgb(44, 44, 44);
+}
+
+.clear-input-button:focus {
+  outline: none;
 }
 
 input:focus {
