@@ -36,15 +36,15 @@ function App() {
       <h1>Users</h1>
       <div className="user-search-section">
         <div className="user-search-bar">
-          <Search/>
+          <button className="user-search-icon user-search-inline"><Search/></button>
           <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
           className="user-search-input"
           placeholder='Enter a username'
           />
+          <button className="clear-input-button user-search-inline"><X/></button>
         </div>
-        <button className="clear-input-button"><X/></button>
         <button>Search</button>
       </div>
 
