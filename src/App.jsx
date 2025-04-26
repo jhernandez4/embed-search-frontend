@@ -49,25 +49,29 @@ function App() {
     fetchUsers();
   }, []);
 
-  const handleSearch = async () => {
+  const handleOnChange = async (e) => {
+    setValue(e.target.value) 
+
     try {
       setIsLoading(true);
-      let response;
 
-      if (value === "") {
+      let response;
+      const trimmedValue = e.target.value.trim(); 
+
+      if (trimmedValue === "") {
         response = await axios.get(`${backendUrl}/users`);
       }
       else {
         response = await axios.get(`${backendUrl}/users/like-search`, {
           params: {
-            "username": value
+            "username": trimmedValue 
           }
         });
       }
       setUsersList(response.data);
       console.log(response.data);
       setError(null);
-      setSearchQuery(value);
+      setSearchQuery(trimmedValue);
     } catch(error) {
       setError(error?.response?.data?.message || 'Failed to fetch users')
       console.error(error);
@@ -102,7 +106,7 @@ function App() {
           <input
           ref={searchInputRef}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={handleOnChange}
           className="user-search-input"
           placeholder='Enter a username'
           />
@@ -110,7 +114,6 @@ function App() {
             <X/>
           </button>
         </div>
-        <button onClick={handleSearch}>Search</button>
       </div>
 
       <h3>Showing {`${usersList.length}`} results</h3>
