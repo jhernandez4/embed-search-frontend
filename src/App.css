@@ -13,16 +13,20 @@
   display: flex;
   justify-content: start;
   align-items: center;
+  gap: 10px;
   height: 40px;
   background-color: rgb(44, 44, 44);
   padding: 10px;
   border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
 }
 
 input {
   height: 40px;
   border: none;
   background-color: transparent;
+  font-size: 1rem;
 }
 
 input:focus {
