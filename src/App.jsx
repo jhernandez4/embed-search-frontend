@@ -53,9 +53,14 @@ function App() {
           <ErrorMessage message={error}/>
         </div>
       )}
-
+      
       <ul className="user-list">
-        <UserProfileCard/>
+        {true && (
+            [...Array(10)].map((_, index) => (
+              <UserLoaderCard key={index}/>
+            ))
+        )}
+
       </ul>
     </div>
   )

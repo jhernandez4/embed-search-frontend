@@ -7,7 +7,7 @@
 .users-page {
   width: 100%;
   min-height: 100vh;
-  padding: 20px;
+  padding: 15px;
 }
 
 * {
@@ -18,7 +18,7 @@
 .user-search-error {
   max-width: 600px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .user-search-section {
@@ -26,7 +26,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 20px;
+  margin: 10px 0;
   max-width: 600px;
 }
 
@@ -76,10 +76,11 @@ input:focus {
 .user-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin: 20px 0;
+  gap: 8px;
   width: 100%;
   max-width: 600px;
+  height: 72vh;
+  overflow-y: scroll;
 }
 
 @media (prefers-color-scheme: light) {
