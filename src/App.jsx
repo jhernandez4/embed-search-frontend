@@ -16,15 +16,16 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   // For no user found message
   const [searchQuery, setSearchQuery] = useState("");
-
-  const searchInputRef = useRef(null);
-
-  const [selectedOption, setSelectedOption] = useState('default');
+  
+  // For dropdown
+  const [selectedOption, setSelectedOption] = useState('like-search');
 
   const options = [
     { value: 'like-search', label: 'Like' },
     { value: 'psql-search', label: 'PSQL' },
   ];
+
+  const searchInputRef = useRef(null);
 
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
@@ -62,7 +63,7 @@ function App() {
         response = await axios.get(`${backendUrl}/users`);
       }
       else {
-        response = await axios.get(`${backendUrl}/users/like-search`, {
+        response = await axios.get(`${backendUrl}/users/${selectedOption}`, {
           params: {
             "username": trimmedValue 
           }
