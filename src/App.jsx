@@ -20,6 +20,7 @@ function App() {
   // For dropdown
   const [selectedOption, setSelectedOption] = useState('like-search');
 
+  // Search types for backend endpoints
   const options = [
     { value: 'like-search', label: 'Like' },
     { value: 'psql-search', label: 'PSQL' },
@@ -28,27 +29,7 @@ function App() {
 
   const searchInputRef = useRef(null);
 
-  // Load users on page load
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get(`${backendUrl}/users`);
-        setUsersList(response.data);
-        console.log(response.data);
-        setError(null);
-      } catch(error) {
-        setError(error?.response?.data?.message || 'Failed to fetch users')
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchUsers();
-  }, []);
-
-  // Load users on input change
+  // Load users on page load and input change
   useEffect(() => {
     const fetchUsersOnSearch = async () => {
       try {
@@ -57,15 +38,18 @@ function App() {
         let response;
 
         if (value === "") {
+          // Get all users
           response = await axios.get(`${backendUrl}/users`);
         }
         else {
+          // Use the selected search type when the input is non-empty
           response = await axios.get(`${backendUrl}/users/${selectedOption}`, {
             params: {
               "username": value 
             }
           });
         }
+
         setUsersList(response.data);
         console.log(response.data);
         setError(null);
