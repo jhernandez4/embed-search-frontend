@@ -23,6 +23,7 @@ function App() {
   const options = [
     { value: 'like-search', label: 'Like' },
     { value: 'psql-search', label: 'PSQL' },
+    { value: 'tfidf-search', label: 'TF-IDF' },
   ];
 
   const searchInputRef = useRef(null);
