@@ -5,7 +5,7 @@ import axios from 'axios';
 import UserProfileCard from './components/UserProfileCard/UserProfileCard';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import UserLoaderCard from './components/UserLoaderCard/UserLoaderCard';
-import NoUsersFoundMessage from './components/NoUsersFoundMessage/NousersFoundMessage';
+import NoUsersFoundMessage from './components/NoUsersFoundMessage/NoUsersFoundMessage';
 import Dropdown from './components/Dropdown/Dropdown';
 
 function App() {
