@@ -14,12 +14,12 @@ function App() {
   const [usersList, setUsersList] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  // For no user found message
-  const [searchQuery, setSearchQuery] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState(null);
 
-  
+  // For no user found message
+  const [searchQuery, setSearchQuery] = useState("");
+
   // For dropdown
   const [selectedOption, setSelectedOption] = useState('like-search');
 
@@ -32,7 +32,7 @@ function App() {
 
   const searchInputRef = useRef(null);
 
-  // Load users on page load and input change
+  // Fetch users on page load and input change
   useEffect(() => {
     const fetchUsersOnSearch = async () => {
       try {
@@ -123,6 +123,8 @@ function App() {
           onChange={handleOnChange}
           className="user-search-input"
           placeholder='Enter a username'
+          autoComplete='off'
+          spellCheck='false'
           />
           <button onClick={handleInputClear} className="clear-input-button user-search-inline">
             <X/>
