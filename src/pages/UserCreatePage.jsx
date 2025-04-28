@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import "./UserCreatePage.css"
+import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 
 const UserCreatePage = () => {
     const [username, setUsername] = useState('');
@@ -52,8 +53,8 @@ const UserCreatePage = () => {
                         id="username"
                         name="username"
                         value={username}
-                        autoComplete='off'
-                        autoCorrect='false'
+                        autoComplete="off"
+                        autoCorrect="false"
                         onChange={(e) => setUsername(e.target.value)}
                         maxLength={30}
                         required
@@ -67,11 +68,13 @@ const UserCreatePage = () => {
                         name="bio"
                         value={bio}
                         onChange={(e) => setBio(e.target.value)}
+                        autoComplete='off'
                         autoCorrect='false'
-                        re
                     />
                 </div>
-                {errorMessage && <p className="form-error">{errorMessage}</p>}
+                {errorMessage && <p className="form-error">
+                    <ErrorMessage message={errorMessage}/>
+                </p>}
                 <button className="form-button" type="submit" disabled={isLoading}>
                     {isLoading ? 'Creating...' : 'Create User'}
                 </button>
