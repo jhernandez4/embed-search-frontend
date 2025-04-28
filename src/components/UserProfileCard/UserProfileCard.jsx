@@ -1,3 +1,4 @@
+import { Trash2 } from "lucide-react";
 import "./UserProfileCard.css"
 
 function UserProfileCard({
@@ -12,6 +13,7 @@ function UserProfileCard({
             <p>{username}</p>
             <small>{bio}</small>
           </div>
+          <button className="user-delete-button"><Trash2/></button>
         </li>
     )
 }
