@@ -7,6 +7,7 @@ import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import UserLoaderCard from './components/UserLoaderCard/UserLoaderCard';
 import NoUsersFoundMessage from './components/NoUsersFoundMessage/NoUsersFoundMessage';
 import Dropdown from './components/Dropdown/Dropdown';
+import { Link } from 'react-router-dom';
 
 function App() {
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -106,7 +107,14 @@ function App() {
 
   return (
     <div className="users-page">
-      <h1>Users</h1>
+      <nav className="users-page-navbar">
+        <Link to={`/create`}>
+          <button>
+            Create User
+          </button>
+        </Link>
+      </nav>
+      <h2>Users</h2>
       <div className="user-search-section">
         <Dropdown
         value={selectedOption}
