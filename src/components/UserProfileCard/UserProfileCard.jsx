@@ -4,7 +4,9 @@ import "./UserProfileCard.css"
 function UserProfileCard({
     profile_picture_url="https://i.imgur.com/vIaC7Uq.png",
     username="DEFAULT_USERNAME",
-    bio="Bio"
+    bio="Bio",
+    handleDelete,
+    isLoading
 }) {
     return (
         <li className="user-list-item">
@@ -13,7 +15,9 @@ function UserProfileCard({
             <p>{username}</p>
             <small>{bio}</small>
           </div>
-          <button className="user-delete-button"><Trash2/></button>
+          <button onClick={handleDelete} disabled={isLoading} className="user-delete-button">
+            <Trash2/>
+          </button>
         </li>
     )
 }
