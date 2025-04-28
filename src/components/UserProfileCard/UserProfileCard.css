@@ -24,6 +24,31 @@
   align-items: start;
 }
 
+.user-delete-button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.user-delete-button:hover {
+  background-color: rgba(255, 0, 0, 0.304); 
+  transform: scale(1.1); 
+}
+
+.user-delete-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.719);
+}
+
+.user-delete-button:active {
+  background-color: rgba(255, 0, 0, 0.2); 
+  transform: scale(0.95);
+}
+
 @media (prefers-color-scheme: light) {
   .user-list-item {
     border: 1px rgb(216, 216, 216) solid;

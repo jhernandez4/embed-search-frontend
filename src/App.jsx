@@ -16,6 +16,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   // For no user found message
   const [searchQuery, setSearchQuery] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState(null);
+
   
   // For dropdown
   const [selectedOption, setSelectedOption] = useState('like-search');
@@ -80,6 +83,23 @@ function App() {
     }
   };
 
+  const handleUserDelete = async (userId) => {
+    try {
+      setIsDeleting(true);  
+      setDeleteError(null); 
+
+      const response = await axios.delete(`${backendUrl}/users/${userId}`);
+      
+      // If the delete operation is successful, remove the user from the usersList
+      setUsersList((prevList) => prevList.filter(user => user.id !== userId));
+    } catch (error) {
+      setDeleteError(error?.response?.data?.message || 'Failed to delete user');
+      console.error(error);
+    } finally {
+      setIsDeleting(false); 
+    }
+  }
+
   const handleInputClear = () => {
     setValue("");
   }
@@ -137,6 +157,8 @@ function App() {
             profile_picture_url={user.profile_picture}
             username={user.username}
             bio={user.bio}
+            handleDelete={() => handleUserDelete(user.id)}
+            isLoading={isDeleting}
           />
         ))}
 
